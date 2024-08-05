@@ -2,7 +2,7 @@
         <div class="main-sidebar sidebar-style-3">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="index-2.html">CodiePie</a>
+                    <a href="<?=base_url();?>">Inventory System</a>
                 </div>
                 <div class="sidebar-brand sidebar-brand-sm">
                     <a href="index-2.html">CP</a>
@@ -10,15 +10,10 @@
                 <ul class="sidebar-menu">
                     <li class="menu-header">Dashboard</li>
                     <li class="dropdown active">
-                        <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="index-0.html">Analytics</a></li>
-                            <li class="active"><a class="nav-link" href="index-2.html">Ecommerce</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-header">Starter</li>
+                        <a href="#" class="nav-link"><i class="fa fa-home"></i><span>Home</span></a>                        
+                    </li>                    
                     <li class="dropdown">
-                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa fa-columns"></i> <span>Layout</span></a>
                         <ul class="dropdown-menu">
                             <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
                             
