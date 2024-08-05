@@ -1,29 +1,29 @@
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="<?=base_url();?>main"><i class="fa fa-home"></i> Home</a>                    
-                  </li>
-                  <li><a><i class="fa fa-television"></i> Attendance <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?=base_url();?>daily_monitoring">Attendance Monitoring</a></li>
-                      <!-- <li><a href="form_advanced.html">Manage Attendance</a></li> -->
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Payroll <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?=base_url();?>manage_payroll">Manage Payroll</a></li>
-                      <li><a href="#" data-toggle="modal" data-target=".printPayrollSummary">Print Payroll Summary</a></li>                      
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-cogs"></i> Settings <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?=base_url();?>manage_deductions">Deductions</a></li>
-                      <li><a href="<?=base_url();?>manage_payroll_period">Payroll Period</a></li>                      
-                      <li><a href="<?=base_url();?>manage_advances">Advances</a></li>
-                    </ul>
-                  </li>                  
-                </ul>
-              </div>
+<!DOCTYPE html>
+<html lang="en">
 
-            </div>
+<!-- index.html  Tue, 07 Jan 2020 03:35:33 GMT -->
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+<title>Ecommerce Dashboard &mdash; CodiePie</title>
+
+<!-- General CSS Files -->
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
+
+<!-- CSS Libraries -->
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/jqvmap/dist/jqvmap.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/summernote/summernote-bs4.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="<?=base_url();?>design/assets/css/style.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/css/components.min.css">
+
+</head>
+<body class="layout-4">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
