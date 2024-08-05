@@ -1,86 +1,204 @@
-<div class="container-fluid">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categories</h6>
-                    <i class="fa fa-angle-down text-dark"></i>
-                </a>
-                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">                        
-                        <a href="<?=base_url();?>shop/oil" class="nav-item nav-link">Oil Paint</a>
-                        <a href="<?=base_url();?>shop/emulsion" class="nav-item nav-link">Emulsion Paint</a>
-                        <a href="<?=base_url();?>shop/enamel" class="nav-item nav-link">Enamel Paint</a>
-                        <a href="<?=base_url();?>shop/bituminous" class="nav-item nav-link">Bituminous Paint</a>
-                        <a href="<?=base_url();?>shop/aluminum" class="nav-item nav-link">Aluminum Paint</a>
-                        <a href="<?=base_url();?>shop/corrosive" class="nav-item nav-link">Anti-Corrosive Paint</a>
-                        <a href="<?=base_url();?>shop/rubber" class="nav-item nav-link">Synthetic Rubber Paint</a>
-                        <a href="<?=base_url();?>shop/cement" class="nav-item nav-link">Cement Paint</a>
-                        <a href="<?=base_url();?>shop/special" class="nav-item nav-link">Speciality home Paint</a>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Online Paint Center</span></h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="<?=base_url();?>" class="nav-item nav-link <?=$home;?>">Home</a>
-                            <a href="<?=base_url();?>myshop" class="nav-item nav-link <?=$shop;?>" >Shop</a>
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        
+        <!-- Start app top navbar -->
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                    <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+                </ul>
+                <div class="search-element">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="search-backdrop"></div>
+                    <div class="search-result">
+                        <div class="search-header">Histories</div>
+                        <div class="search-item">
+                            <a href="#">How to Used HTML in Laravel</a>
+                            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
                         </div>
-                        <!-- <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
-                        </div> -->
-                    </div>
-                </nav>
-                <div id="header-carousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="<?=base_url();?>design/img/carousel-paint.jpg" alt="Image">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Life's Great with Great Colours</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Select yours now</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
-                            </div>
+                        <div class="search-item">
+                            <a href="https://themeforest.net/user/admincraft/portfolio" target="_black">Admincraft Portfolio</a>
+                            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
                         </div>
-                        <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="<?=base_url();?>design/img/carousel-paint1.jpg" alt="Image">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">May Your House Be Your Canvas!</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
-                                </div>
-                            </div>
+                        <div class="search-item">
+                            <a href="#">#CodiePie</a>
+                            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                        </div>
+                        <div class="search-header">Result</div>
+                        <div class="search-item">
+                            <a href="#">
+                                <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
+                                oPhone 11 Pro
+                            </a>
+                        </div>
+                        <div class="search-item">
+                            <a href="#">
+                                <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
+                                Drone Zx New Gen-3
+                            </a>
+                        </div>
+                        <div class="search-item">
+                            <a href="#">
+                                <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
+                                Headphone JBL
+                            </a>
+                        </div>
+                        <div class="search-header">Projects</div>
+                        <div class="search-item">
+                            <a href="https://themeforest.net/item/epice-laravel-admin-template-for-hr-project-management/24466729" target="_black">
+                                <div class="search-icon bg-danger text-white mr-3"><i class="fas fa-code"></i></div>
+                                Epice Laravel - Admin Template
+                            </a>
+                        </div>
+                        <div class="search-item">
+                            <a href="https://themeforest.net/item/soccer-project-management-admin-template-ui-kit/24646866" target="_black">
+                                <div class="search-icon bg-primary text-white mr-3"><i class="fas fa-laptop"></i></div>
+                                Soccer - Admin Template
+                            </a>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                            <span class="carousel-control-prev-icon mb-n2"></span>
-                        </div>
-                    </a>
-                    <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                            <span class="carousel-control-next-icon mb-n2"></span>
-                        </div>
-                    </a>
                 </div>
-            </div>
-        </div>
-    </div>
+            </form>
+            <ul class="navbar-nav navbar-right">
+                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Messages
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-message">
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle">
+                                <div class="is-online"></div>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Kusnaedi</b>
+                                <p>Hello, Bro!</p>
+                                <div class="time">10 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="assets/img/avatar/avatar-2.png" class="rounded-circle">
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Dedik Sugiharto</b>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="time">12 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="assets/img/avatar/avatar-3.png" class="rounded-circle">
+                                <div class="is-online"></div>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Agung Ardiansyah</b>
+                                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="time">12 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle">
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Ardian Rahardiansyah</b>
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                                <div class="time">16 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle">
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Alfa Zulkarnain</b>
+                                <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                <div class="time">Yesterday</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    </div>
+                </li>
+                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Notifications
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-icons">
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-icon bg-primary text-white">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="dropdown-item-desc"> Template update is available now!
+                                <div class="time text-primary">2 Min Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-info text-white">
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+                                <div class="time">10 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-success text-white">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                                <div class="time">12 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-danger text-white">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Low disk space. Let's clean it!
+                                <div class="time">17 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-info text-white">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Welcome to CodiePie template!
+                                <div class="time">Yesterday</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                    <div class="d-sm-none d-lg-inline-block">Hi, Michelle Green</div></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-title">Logged in 5 min ago</div>
+                        <a href="features-profile.html" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
+                        <a href="features-activities.html" class="dropdown-item has-icon"><i class="fas fa-bolt"></i> Activities</a>
+                        <a href="features-settings.html" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
