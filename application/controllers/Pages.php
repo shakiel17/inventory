@@ -16,5 +16,14 @@ date_default_timezone_set('Asia/Manila');
             $this->load->view('templates/footer');
                         
         }
+        public function login(){
+            $page = "login";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }            
+            $this->load->view('templates/header');                                    
+            $this->load->view('pages/'.$page);            
+            $this->load->view('templates/footer');
+        }
 }
 ?>
