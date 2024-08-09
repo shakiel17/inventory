@@ -10,8 +10,8 @@
                         <div class="card-header">
                             <h4>User Login</h4>
                         </div>
-                        <div class="card-body">
-                            <form method="POST" action="#" class="needs-validation" novalidate="">
+                        <div class="card-body">                            
+                                <?=form_open(base_url()."authentication",array('class' => 'needs-validation','novalidate' => ''));?>
                                 <div class="form-group">
                                     <label for="email">Username</label>
                                     <input type="text" class="form-control" name="username" tabindex="1" required autofocus autocomplete="off">
@@ -33,14 +33,14 @@
                                     Login
                                     </button>
                                 </div>
-                            </form>
+                            <?=form_close();?>
                             <div class="text-center mt-4 mb-3">
                                 <a class="text-job text-muted" href="<?=base_url();?>">Back to Main</a>
                             </div>                            
                         </div>
                     </div>
                     <div class="mt-5 text-muted text-center">
-                        Don't have an account? <a href="auth-register.html">Create One</a>
+                        Don't have an account? <a href="<?=base_url();?>register">Create One</a>
                     </div>
                     <div class="simple-footer">
                         Copyright &copy; MedMatrix e-Health Solutions

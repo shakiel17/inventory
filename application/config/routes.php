@@ -51,6 +51,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //=====================User Routes============================
+$route['save_production'] = 'pages/save_production';
+$route['add_production/(:any)/(:any)'] = 'pages/add_production/$1/$2';
+$route['manage_production'] = 'pages/manage_production';
+$route['rr_print/(:any)/(:any)'] = 'pages/rr_print/$1/$2';
+$route['post_receiving'] = 'pages/post_receiving';
+$route['new_receiving'] = 'pages/new_receiving';
+$route['manual_receiving'] = 'pages/manual_receiving';
+$route['edit_item/(:any)'] = 'pages/edit_item/$1';
+$route['save_item'] = 'pages/save_item';
+$route['add_item'] = 'pages/add_item';
+$route['manage_items'] = 'pages/manage_items';
+$route['authentication'] = 'pages/authentication';
+$route['save_user'] = 'pages/save_user';
+$route['register'] = 'pages/register';
+$route['logout'] = 'pages/logout';
 $route['login'] = 'pages/login';
 $route['default_controller'] = 'pages/index';
 $route['attendance'] = 'pages/attendance';

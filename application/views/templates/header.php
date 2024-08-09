@@ -16,12 +16,17 @@
 <link rel="stylesheet" href="<?=base_url();?>design/assets/modules/summernote/summernote-bs4.css">
 <link rel="stylesheet" href="<?=base_url();?>design/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="<?=base_url();?>design/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/datatables/datatables.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
 
 <!-- Template CSS -->
 <link rel="stylesheet" href="<?=base_url();?>design/assets/css/style.min.css">
 <link rel="stylesheet" href="<?=base_url();?>design/assets/css/components.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <link rel="icon" type="image/x-icon" href="<?=base_url();?>design/assets/img/products/product-5-50.png">
 
