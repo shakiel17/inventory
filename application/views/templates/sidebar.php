@@ -26,7 +26,7 @@
                         <ul class="dropdown-menu">
                         <li class="<?=$item;?>"><a class="nav-link" href="<?=base_url();?>manage_items">Manage Items</a></li>
                             <li class="<?=$prod;?>"><a class="nav-link" href="<?=base_url();?>manage_production">Production</a></li>
-                            <li class="<?=$kit;?>"><a class="nav-link" href="bootstrap-badge.html">Kit Assembly</a></li>                            
+                            <li class="<?=$kit;?>"><a class="nav-link" href="<?=base_url();?>kit_assembly">Kit Assembly</a></li>                            
                         </ul>                       
                     </li>             
                     <li class="dropdown <?=$inventory;?>">

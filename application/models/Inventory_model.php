@@ -154,6 +154,30 @@
                 return true;
             }else{
                 return false;
+            }            
+        }
+
+        public function getAllKit(){
+            $result=$this->db->query("SELECT * FROM kitassembly ORDER BY `description` ASC");
+            return $result->result_array();
+        }
+
+        public function getSingleKit($code){
+            $result=$this->db->query("SELECT * FROM kitassembly WHERE id='$code'");
+            return $result->row_array();
+        }
+
+        public function save_kit($code,$description,$unitcost){
+            if($code==""){
+                $code=date('YmdHis');
+                $result=$this->db->query("INSERT INTO kitassembly(id,`description`,sellingpricePHIC,sellingpriceOPD) VALUES('$code','$description','$unitcost','$unitcost')");
+            }else{
+                $result=$this->db->query("UPDATE kitassembly SET `description`='$description',unitcost='$unitcost' WHERE id='$code'");
+            }
+            if($result){
+                return true;
+            }else{
+                return false;
             }
         }
     }

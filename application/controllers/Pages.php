@@ -476,5 +476,169 @@ date_default_timezone_set('Asia/Manila');
             }
                 echo "<script>window.location='".base_url()."add_production/$item_code/$rrno';</script>";
         }
+
+        public function kit_assembly(){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllKit();
+            $data['item_code'] = ''; 
+            $data['rrno'] = '';
+            $data['add_kit'] = '';
+            $data['add_qty'] = '';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
+
+        public function add_kit(){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+            $data['items'] = $this->Inventory_model->getAllKit();
+            $data['item_code'] = '';             
+            $data['rrno'] = '';
+            $data['add_kit'] = 'add_kit';
+            $data['add_qty'] = '';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');                        
+        }
+        public function edit_kit($code){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+            $data['items'] = $this->Inventory_model->getAllKit();            
+            $data['item_code'] = $code; 
+            $data['rrno'] = '';
+            $data['add_kit'] = 'add_kit';            
+            $data['add_qty'] = '';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');                        
+        }
+
+        public function save_kit(){
+            $code=$this->input->post('code');
+            $description=$this->input->post('description');
+            $unitcost=$this->input->post('unitcost');
+            $save=$this->Inventory_model->save_kit($code,$description,$unitcost);
+            if($save){
+                echo "<script>alert('Kit details successfully saved!');</script>";
+            }else{
+                echo "<script>alert('Unable to save kit details!');</script>";
+            }                
+            echo "<script>window.location='".base_url()."kit_assembly';</script>";
+        }
+
+        public function add_kit_qty($code){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllKit();
+            $data['item_code'] = ''; 
+            $data['rrno'] = '';
+            $data['add_kit'] = '';
+            $data['add_qty'] = $code;
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');                        
+        }
+
+        public function add_kit_item($code){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllKit();
+            $data['item_code'] = $code; 
+            $data['rrno'] = '';
+            $data['add_kit'] = '';
+            $data['add_qty'] = '';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');                        
+        }
+
 }
 ?>
