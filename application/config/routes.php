@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //=====================User Routes============================
+$route['save_kit_qty'] = 'pages/save_kit_qty';
+$route['save_kit_item'] = 'pages/save_kit_item';
 $route['save_kit'] = 'pages/save_kit';
 $route['add_kit_item/(:any)'] = 'pages/add_kit_item/$1';
 $route['add_kit_qty/(:any)'] = 'pages/add_kit_qty/$1';

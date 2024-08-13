@@ -180,5 +180,87 @@
                 return false;
             }
         }
+        public function getAllItemsByRRNO(){
+            $result=$this->db->query("SELECT s.*,SUM(s.quantity) as quantity,r.description FROM stocktable s INNER JOIN receiving r ON r.code=s.code WHERE r.prodtype='KIT SUPPLIES' GROUP BY s.code ORDER BY r.description ASC");
+            return $result->result_array();
+        }
+        public function getRRNO(){
+            $result=$this->db->query("SELECT rrno,SUM(quantity) as quantity FROM stocktable WHERE rrno <> '' GROUP BY rrno ORDER BY rrno ASC");
+            return $result->result_array();
+        }
+        public function getQty($code){
+            $result=$this->db->query("SELECT SUM(quantity) as quantity FROM stocktable WHERE code='$code'");
+            return $result->row_array();
+        }
+        public function checkItemExist($id,$code){
+            $result=$this->db->query("SELECT * FROM kitassemblydetails WHERE productcode='$code' AND id='$id'");
+            return $result->result_array();
+        }
+
+        public function save_kit_item($id,$rrno,$code,$quantity){
+            $qry=$this->db->query("SELECT r.description,s.* FROM receiving r INNER JOIN stocktable s ON s.code=r.code WHERE r.code='$code' AND s.rrno='$rrno' GROUP BY s.code");
+            $res=$qry->row_array();
+            $description=$res['description'];
+            $expiration=$res['expiration'];
+            $lotno=$res['lotno'];
+            $qry1=$this->db->query("SELECT SUM(quantity) as quantity FROM stocktable WHERE code='$id' GROUP BY code");
+            $res1=$qry1->row_array();
+            $kit_qty=$res1['quantity'];
+            $qty=$quantity*$kit_qty;
+            $date=date('Y-m-d');
+            $time=date('H:i:s');
+            $user=$this->session->fullname;
+            if($qty>0){
+                $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$code','-$qty','$expiration','$lotno','$date','$time','$user')");
+            }
+                $result=$this->db->query("INSERT INTO kitassemblydetails(id,productcode,productdesc,productqty) VALUES('$id','$code','$description','$quantity')");
+
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function save_kit_qty($id,$quantity,$rrno){
+            $user=$this->session->fullname;
+            $date=date('Y-m-d');
+            $time=date('H:i:s');
+            $query=$this->db->query("SELECT * FROM kitassemblydetails WHERE id='$id'");
+            if($query->num_rows()>0){
+                $rst=$query->result_array();
+                $count=0;
+                foreach($rst as $row){
+                    $itemqty=$row['productqty']*$quantity;
+                    $checkqty=$this->db->query("SELECT SUM(quantity) as quantity FROM stocktable WHERE code='$row[productcode]' AND rrno='$rrno' GROUP BY code");
+                    $resqty=$checkqty->row_array();
+                    if($itemqty > $resqty['quantity']){
+                        $count++;
+                    }
+                }
+                if($count==0){
+                    foreach($rst as $item){
+                        $itemqty=$item['productqty']*$quantity;
+                        $expiration="";
+                        $lotno="";
+                        $check=$this->db->query("SELECT * FROM stocktable WHERE code='$item[productcode]' AND rrno='$rrno' GROUP BY code");
+                        if($check->num_rows()>0){
+                            $r=$check->row_array();
+                            $expiration=$r['expiration'];
+                            $lotno=$r['lotno'];
+                        }
+                        
+                        $this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$item[productcode]','-$itemqty','$expiration','$lotno','$date','$time','$user')");                    
+                    }
+                    $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$id','$quantity','','','$date','$time','$user')");
+                }
+                
+            }            
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 ?>

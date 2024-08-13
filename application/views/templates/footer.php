@@ -47,6 +47,23 @@
             button.disabled = true;
         }
     }
+
+    
+
+    function changeDisplay(){
+        alert();
+        var rrno = getElementById("rrno");
+        var items = document.getElementById("rr_items");
+        var btn = document.getElementById("btnrrno");
+        if(rrno.value <> ""){
+            button.style.display = 'block';
+            items.style.display = 'block';
+        }else{
+            button.style.display = 'none';
+            items.style.display = 'none';
+        }
+    }
+
 </script>
 </body>
 

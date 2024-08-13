@@ -499,6 +499,7 @@ date_default_timezone_set('Asia/Manila');
             $data['rrno'] = '';
             $data['add_kit'] = '';
             $data['add_qty'] = '';
+            $data['add_kit_item'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -530,6 +531,7 @@ date_default_timezone_set('Asia/Manila');
             $data['rrno'] = '';
             $data['add_kit'] = 'add_kit';
             $data['add_qty'] = '';
+            $data['add_kit_item'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -559,6 +561,7 @@ date_default_timezone_set('Asia/Manila');
             $data['rrno'] = '';
             $data['add_kit'] = 'add_kit';            
             $data['add_qty'] = '';
+            $data['add_kit_item'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -602,6 +605,7 @@ date_default_timezone_set('Asia/Manila');
             $data['rrno'] = '';
             $data['add_kit'] = '';
             $data['add_qty'] = $code;
+            $data['add_kit_item'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -632,12 +636,46 @@ date_default_timezone_set('Asia/Manila');
             $data['rrno'] = '';
             $data['add_kit'] = '';
             $data['add_qty'] = '';
+            $data['add_kit_item'] = 'add_kit_item';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
             $this->load->view('pages/'.$page,$data);
             $this->load->view('templates/modal');
             $this->load->view('templates/footer');                        
+        }
+
+        public function save_kit_item(){
+            $id=$this->input->post('id');
+            $code=$this->input->post('code');
+            $rrno=$this->input->post('rrno');
+            $quantity=$this->input->post('quantity');
+            $x=0;
+            foreach($code as $pcode){
+                if($quantity[$x] > 0){
+                    $save=$this->Inventory_model->save_kit_item($id,$rrno,$pcode,$quantity[$x]);
+                }                
+                $x++;
+            }            
+            if($save){
+                echo "<script>alert('Kit items successfully saved!');</script>";
+            }else{
+                echo "<script>alert('Unable to save kit details!');</script>";
+            }                
+            echo "<script>window.location='".base_url()."kit_assembly';</script>";
+        }
+
+        public function save_kit_qty(){
+            $id=$this->input->post('id');
+            $rrno=$this->input->post('rrno');
+            $quantity=$this->input->post('quantity');            
+            $save=$this->Inventory_model->save_kit_qty($id,$quantity,$rrno);            
+            if($save){
+                echo "<script>alert('Kit quantity successfully saved!');</script>";
+            }else{
+                echo "<script>alert('Unable to save kit quantity!');</script>";
+            }                
+            echo "<script>window.location='".base_url()."kit_assembly';</script>";
         }
 
 }
