@@ -84,7 +84,7 @@
                 $code=date('YmdHis');
                 $result=$this->db->query("INSERT INTO receiving(code,`description`,unit,prodtype,production,datearray,timearray,receiving) VALUES('$code','$description','$unit','$type','$prod','$date','$time','$receiving')");
                 if($result){
-                    $result=$this->db->query("INSERT INTO stocktable(code,quantity,datearray,timearray) VALUES('$code','0','$date','$time')");
+                    $result=$this->db->query("INSERT INTO stocktable(code,quantity,trantype,datearray,timearray) VALUES('$code','0','NEW','$date','$time')");
                 }else{
                     $this->db->query("DELETE FROM receiving WHERE code='$code'");
                     return false;
@@ -118,7 +118,7 @@
             $time=date('H:i:s');
             $result=$this->db->query("INSERT INTO stocktablepayables(rrno,invno,code,quantity,expiration,lotno,datearray,timearray) VALUES('$rrno','$invno','$code','$quantity','$expiration','$lotno','$invdate','$time')");
             if($result){
-                $this->db->query("INSERT INTO stocktable(rrno,invno,code,quantity,expiration,lotno,datearray,timearray) VALUES('$rrno','$invno','$code','$quantity','$expiration','$lotno','$invdate','$time')");;
+                $this->db->query("INSERT INTO stocktable(rrno,invno,code,quantity,expiration,lotno,trantype,datearray,timearray) VALUES('$rrno','$invno','$code','$quantity','$expiration','$lotno','charge','$invdate','$time')");;
                 return true;
             }            
         }
@@ -148,8 +148,8 @@
             $time=date('H:i:s');
             $query=$this->db->query("SELECT * FROM stocktable WHERE code='$item_code' AND rrno='$rrno' AND invno <> ''");
             $res=$query->row_array();
-            $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray) VALUES('$rrno','$item_code','-$no_units','$res[expiration]','$res[lotno]','$date','$time')");            
-            $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray) VALUES('$rrno','$prodcode','$no_unit_produce','$res[expiration]','$res[lotno]','$date','$time')");            
+            $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,trantype,datearray,timearray) VALUES('$rrno','$item_code','-$no_units','$res[expiration]','$res[lotno]','production','$date','$time')");            
+            $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,trantype,datearray,timearray) VALUES('$rrno','$prodcode','$no_unit_produce','$res[expiration]','$res[lotno]',,'production''$date','$time')");            
             if($result){
                 return true;
             }else{
@@ -211,7 +211,7 @@
             $time=date('H:i:s');
             $user=$this->session->fullname;
             if($qty>0){
-                $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$code','-$qty','$expiration','$lotno','$date','$time','$user')");
+                $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,trantype,datearray,timearray,loginuser) VALUES('$rrno','$code','-$qty','$expiration','$lotno','Kit Assembly','$date','$time','$user')");
             }
                 $result=$this->db->query("INSERT INTO kitassemblydetails(id,productcode,productdesc,productqty) VALUES('$id','$code','$description','$quantity')");
 
@@ -252,7 +252,7 @@
                         
                         $this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$item[productcode]','-$itemqty','$expiration','$lotno','$date','$time','$user')");                    
                     }
-                    $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,datearray,timearray,loginuser) VALUES('$rrno','$id','$quantity','','','$date','$time','$user')");
+                    $result=$this->db->query("INSERT INTO stocktable(rrno,code,quantity,expiration,lotno,trantype,datearray,timearray,loginuser) VALUES('$rrno','$id','$quantity','','','KIT ASSEMBLY','$date','$time','$user')");
                 }
                 
             }            
