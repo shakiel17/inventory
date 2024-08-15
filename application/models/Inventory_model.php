@@ -134,10 +134,11 @@
             $result=$this->db->query("SELECT r.*,SUM(s.quantity) as quantity,s.rrno FROM receiving r INNER JOIN stocktable s ON s.code=r.code WHERE r.production='1' AND s.rrno <> '' GROUP BY r.code,s.rrno ORDER BY s.rrno ASC");
             return $result->result_array();
         }
+        
         public function fetchSingleItem($code){
             $result=$this->db->query("SELECT r.*,SUM(s.quantity) as quantity FROM stocktable s INNER JOIN receiving r ON r.code=s.code WHERE r.code='$code' GROUP BY r.code");
             return $result->row_array();
-        }
+        }        
         public function save_production(){
             $item_code=$this->input->post('item_code');
             $rrno=$this->input->post('rrno');

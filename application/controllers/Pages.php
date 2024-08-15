@@ -500,6 +500,7 @@ date_default_timezone_set('Asia/Manila');
             $data['add_kit'] = '';
             $data['add_qty'] = '';
             $data['add_kit_item'] = '';
+            $data['stock_transfer'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -532,6 +533,7 @@ date_default_timezone_set('Asia/Manila');
             $data['add_kit'] = 'add_kit';
             $data['add_qty'] = '';
             $data['add_kit_item'] = '';
+            $data['stock_transfer'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -562,6 +564,7 @@ date_default_timezone_set('Asia/Manila');
             $data['add_kit'] = 'add_kit';            
             $data['add_qty'] = '';
             $data['add_kit_item'] = '';
+            $data['stock_transfer'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -606,6 +609,7 @@ date_default_timezone_set('Asia/Manila');
             $data['add_kit'] = '';
             $data['add_qty'] = $code;
             $data['add_kit_item'] = '';
+            $data['stock_transfer'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -637,6 +641,7 @@ date_default_timezone_set('Asia/Manila');
             $data['add_kit'] = '';
             $data['add_qty'] = '';
             $data['add_kit_item'] = 'add_kit_item';
+            $data['stock_transfer'] = '';
             $this->load->view('templates/header');                        
             $this->load->view('templates/nav');
             $this->load->view('templates/sidebar',$data);
@@ -676,6 +681,38 @@ date_default_timezone_set('Asia/Manila');
                 echo "<script>alert('Unable to save kit quantity!');</script>";
             }                
             echo "<script>window.location='".base_url()."kit_assembly';</script>";
+        }
+
+        public function stock_transfer($code){
+            $page = "kit_assembly";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = 'active';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = 'active';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllKit();                
+            $data['item_code'] = $code; 
+            $data['rrno'] = '';
+            $data['add_kit'] = '';
+            $data['add_qty'] = '';
+            $data['add_kit_item'] = '';
+            $data['stock_transfer'] = 'stock_transfer';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');                        
         }
 
 }

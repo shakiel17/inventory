@@ -44,7 +44,7 @@
                                                         echo "<td>$qty[quantity]</td>";                                                        
                                                         echo "<td align='center'><a href='".base_url()."edit_kit/$item[id]' class='btn btn-success btn-sm'>Edit</a> <a href='".base_url()."add_kit_item/$item[id]' class='btn btn-warning btn-sm'>Items</a> <a href='".base_url()."add_kit_qty/$item[id]' class='btn btn-info btn-sm'>Qty</a>";
                                                         ?>
-                                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Do you wish to stock transfer this kit?'); return false;">Transfer</a>
+                                                            <a href="<?=base_url();?>stock_transfer/<?=$item['id'];?>" class="btn btn-danger btn-sm">Transfer</a>
                                                         <?php
                                                         echo "</td>";
                                                     echo "</tr>";
@@ -195,6 +195,40 @@
                                     <div class="form-group">
                                         <label>Quantity</label>
                                         <input type="text" name="quantity" class="form-control" required>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <?=form_close();?>
+                        </div>
+                        <?php
+                        }
+                        ?>
+
+<?php
+                        if($stock_transfer <> ""){
+                        ?>
+                        <div class="col-5">
+                            <?=form_open(base_url()."save_production");?>
+                            <input type="hidden" name="code" value="<?=$item_code;?>">                            
+                            <div class="card">
+                                <div class="card-header">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td><h4>Stock Transfer</h4></td>
+                                            <td align="right"><button type="submit" class="btn btn-primary">Proceed</button> <a href="<?=base_url();?>kit_assembly" class="btn btn-danger">Close</a></td>
+                                        </tr>
+                                    </table>                                    
+                                </div>                      
+                                <?php
+                                $query=$this->Inventory_model->db->query("SELECT * FROM kitassembly WHERE id='$item_code'");
+                                $selected=$query->row_array();
+                                $qty=$this->Inventory_model->getQty($item_code);
+                                ?>
+                                <div class="card-body">
+                                    <div class="form-group">                                        
+                                        Item: <b><?=$selected['description'];?></b><br>                                        
+                                        Stock on Hand: <b><?=$qty['quantity'];?></b><br>                                        
+                                        Quantity: <input type="text" class="form-control" name="quantity" style="width:200px;">
                                     </div>                                    
                                 </div>
                             </div>
