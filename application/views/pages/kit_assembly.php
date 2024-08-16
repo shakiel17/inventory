@@ -208,7 +208,7 @@
                         if($stock_transfer <> ""){
                         ?>
                         <div class="col-5">
-                            <?=form_open(base_url()."save_production");?>
+                            <?=form_open(base_url()."post_stock_transfer");?>
                             <input type="hidden" name="code" value="<?=$item_code;?>">                            
                             <div class="card">
                                 <div class="card-header">
@@ -227,8 +227,9 @@
                                 <div class="card-body">
                                     <div class="form-group">                                        
                                         Item: <b><?=$selected['description'];?></b><br>                                        
-                                        Stock on Hand: <b><?=$qty['quantity'];?></b><br>                                        
-                                        Quantity: <input type="text" class="form-control" name="quantity" style="width:200px;">
+                                        Stock on Hand: <b><?=$qty['quantity'];?></b><br><br>                                        
+                                        Quantity: <input type="text" class="form-control" name="quantity" style="width:200px;"><br>
+                                        Expiration: <input type="date" class="form-control" name="expiration" style="width:300px;">
                                     </div>                                    
                                 </div>
                             </div>

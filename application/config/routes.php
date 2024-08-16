@@ -51,6 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //=====================User Routes============================
+$route['count_sheet_print'] = 'pages/count_sheet_print';
+$route['count_sheet'] = 'pages/count_sheet';
+$route['view_stock_card'] = 'pages/view_stock_card';
+$route['stock_card'] = 'pages/stock_card';
+$route['post_stock_transfer'] = 'pages/post_stock_transfer';
 $route['stock_transfer/(:any)'] = 'pages/stock_transfer/$1';
 $route['save_kit_qty'] = 'pages/save_kit_qty';
 $route['save_kit_item'] = 'pages/save_kit_item';

@@ -715,5 +715,149 @@ date_default_timezone_set('Asia/Manila');
             $this->load->view('templates/footer');                        
         }
 
+        public function post_stock_transfer(){
+            $post=$this->Inventory_model->post_transfer();
+            if($post){
+                echo "<script>alert('Stock transfer successfull!');</script>";
+            }else{
+                echo "<script>alert('Unable to transfer stock!');</script>";
+            }                
+            echo "<script>window.location='".base_url()."kit_assembly';</script>";
+        }
+
+        public function stock_card(){
+            $page = "stock_card";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = 'active';
+                $data['card'] = 'active';
+                $data['sheet'] = '';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllItems();                       
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
+
+        public function view_stock_card(){
+			$page="view_stock_card";			
+			$startdate=date('F d, Y',strtotime($this->input->post('startdate')));
+			$enddate=date('F d, Y',strtotime($this->input->post('enddate')));			
+			$itemdesc = $this->Inventory_model->view_sc_description();
+			$description = $itemdesc['description'];			
+			$data['itembalance'] = $this->Inventory_model->view_sc_begbalance();
+			$begin=0;
+			$begin=$data['itembalance']['begbalance'];
+			$data['begbalance'] = $begin;
+			$data['items'] = $this->Inventory_model->view_stock_card();            
+			$html = $this->load->view('pages/'.$page,$data,true);
+			$mpdf = new \Mpdf\Mpdf([
+				'margin_top' => 58,
+				'margin_left' => 10,
+				'margin_right' => 10,
+				'margin_bottom' => 22,
+				'orientation' => 'L'
+			]);
+			$mpdf->setHTMLHeader('
+                <div style="text-align:center;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20">&nbsp;</td>
+                        <td width="80"><img src="'.base_url().'design/assets/img/kmsci.png" width="80"></td>
+                        <td align="center" style="font-family:Arial;"><b style="font-size:12px;">KIDAPAWAN MEDICAL SPECIALISTS CENTER, INC.</b><br>
+                    <font style="font-size:10px;">Sudapin, Kidapawan City</font><br>
+                    <font style="font-size:10px;">Tel. No.: (064)-577-1762</font></td>
+                    <td width="30">&nbsp;</td>
+                </tr>
+                </table>
+                <center><h4>ELECTRONIC STOCK CARD</h4></center>
+        <table width="100%" border="0" cellspacing="0" style="font-family:Arial,Helvetica; font-size: 12px;">
+        <tr>
+            <td width="10%" align="right">Item Code:</td>
+            <td ><b>'.$itemdesc['code'].'</b></td>
+            </tr>
+        <tr>
+            <td width="10%" align="right">Item Name:</td>
+            <td ><b>'.$description.'</b></td>
+            </tr>
+        </table>
+        <br>
+        </div>
+                ');
+
+			$mpdf->setFooter('{PAGENO}');
+			$mpdf->autoPageBreak = true;
+			$mpdf->WriteHTML($html);
+			$mpdf->Output();
+		}
+
+        public function count_sheet(){
+            $page = "count_sheet";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = 'active';
+                $data['card'] = '';
+                $data['sheet'] = 'active';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = array();
+                $data['date'] = '';
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
+
+        public function count_sheet_print(){
+            $page = "count_sheet";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = 'active';
+                $data['card'] = '';
+                $data['sheet'] = 'active';
+            $data['report'] = '';
+                $data['rr'] = '';
+                $data['prodrep'] = '';  
+                $data['items'] = $this->Inventory_model->getAllReceivingItem(); 
+                $data['date'] = $this->input->post('rundate');
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
 }
 ?>

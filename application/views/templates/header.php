@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="<?=base_url();?>design/assets/css/style.min.css">
 <link rel="stylesheet" href="<?=base_url();?>design/assets/css/components.min.css">
 
+<link rel="stylesheet" href="<?=base_url();?>design/assets/modules/select2/dist/css/select2.min.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

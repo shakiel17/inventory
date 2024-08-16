@@ -32,8 +32,8 @@
                     <li class="dropdown <?=$inventory;?>">
                         <a href="#" class="nav-link has-dropdown"><i class="fa fa-database"></i> <span>Inventory</span></a>
                         <ul class="dropdown-menu">
-                            <li class="<?=$card;?>"><a class="nav-link" href="bootstrap-alert.html">e-Stock Card</a></li>
-                            <li class="<?=$sheet;?>"><a class="nav-link" href="bootstrap-badge.html">Count Sheet</a></li>                            
+                            <li class="<?=$card;?>"><a class="nav-link" href="<?=base_url();?>stock_card">e-Stock Card</a></li>
+                            <li class="<?=$sheet;?>"><a class="nav-link" href="<?=base_url();?>count_sheet">Count Sheet</a></li>                            
                         </ul>
                     </li>                                        
                     <li class="dropdown <?=$report;?>">

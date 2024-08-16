@@ -34,6 +34,7 @@
 <!-- Template JS File -->
 <script src="<?=base_url();?>design/js/scripts.js"></script>
 <script src="<?=base_url();?>design/js/custom.js"></script>
+<script src="<?=base_url();?>design/assets/modules/select2/dist/js/select2.full.min.js"></script>
 <script>
     let pass1 = document.querySelector(".password");
     let pass2 = document.querySelector(".password-confirm");
