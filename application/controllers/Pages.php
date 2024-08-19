@@ -859,5 +859,91 @@ date_default_timezone_set('Asia/Manila');
             $this->load->view('templates/footer');
                         
         }
+
+        public function receiving_report(){
+            $page = "report_receiving";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = 'active';
+                $data['rr'] = 'active';
+                $data['prodrep'] = '';  
+            $data['items'] = array();
+            $data['result']='';
+            $this->session->unset_userdata('pono');
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
+
+        public function view_receiving_report(){
+            $page = "report_receiving";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = 'active';
+                $data['rr'] = 'active';
+                $data['prodrep'] = '';  
+            $data['items'] = $this->Inventory_model->getAllReceivingReport();
+            $data['result']='query';
+            $this->session->unset_userdata('pono');
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
+
+        public function production_report(){
+            $page = "production_report";
+            if(!file_exists(APPPATH.'views/pages/'.$page.".php")){
+                show_404();
+            }         
+            $data['home'] = '';
+            $data['product'] = '';
+                $data['item'] = '';
+                $data['prod'] = '';
+                $data['kit'] = '';
+            $data['receive'] = '';            
+            $data['inventory'] = '';
+                $data['card'] = '';
+                $data['sheet'] = '';
+            $data['report'] = 'active';
+                $data['rr'] = '';
+                $data['prodrep'] = 'active';  
+            $data['items'] = $this->Inventory_model->getAllProductionReport();
+            $this->session->unset_userdata('pono');
+            $this->load->view('templates/header');                        
+            $this->load->view('templates/nav');
+            $this->load->view('templates/sidebar',$data);
+            $this->load->view('pages/'.$page,$data);
+            $this->load->view('templates/modal');
+            $this->load->view('templates/footer');
+                        
+        }
 }
 ?>

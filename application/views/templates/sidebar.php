@@ -39,8 +39,8 @@
                     <li class="dropdown <?=$report;?>">
                         <a href="#" class="nav-link has-dropdown"><i class="fa fa-file-o"></i> <span>Reports</span></a>
                         <ul class="dropdown-menu">
-                            <li class="<?=$rr;?>"><a class="nav-link" href="components-article.html">Receiving Report</a></li>
-                            <li class="<?=$prodrep;?>"><a class="nav-link" href="components-avatar.html">Production</a></li>                            
+                            <li class="<?=$rr;?>"><a class="nav-link" href="<?=base_url();?>receiving_report">Receiving Report</a></li>
+                            <li class="<?=$prodrep;?>"><a class="nav-link" href="<?=base_url();?>production">Production</a></li>                            
                         </ul>
                     </li>
                     <?php

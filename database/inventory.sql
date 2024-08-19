@@ -118,7 +118,7 @@ CREATE TABLE `seqpatientid` (
   `last_gen_date` date DEFAULT NULL,
   `last_gen_by` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `stocktable` */
 
@@ -137,7 +137,7 @@ CREATE TABLE `stocktable` (
   `timearray` time DEFAULT NULL,
   `loginuser` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `stocktablepayables` */
 

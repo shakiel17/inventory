@@ -51,6 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //=====================User Routes============================
+$route['production'] = 'pages/production_report';
+$route['view_receiving_report'] = 'pages/view_receiving_report';
+$route['receiving_report'] = 'pages/receiving_report';
 $route['count_sheet_print'] = 'pages/count_sheet_print';
 $route['count_sheet'] = 'pages/count_sheet';
 $route['view_stock_card'] = 'pages/view_stock_card';

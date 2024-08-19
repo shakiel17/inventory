@@ -330,6 +330,23 @@
         public function getQtyByDate($code,$date){
             $result=$this->db->query("SELECT SUM(quantity) as quantity FROM stocktable WHERE code='$code' AND datearray <= '$date'");
             return $result->row_array();
+        }    
+        
+        public function getAllReceivingReport(){
+            $startdate=$this->input->post('startdate');
+            $enddate=$this->input->post('enddate');
+            $result=$this->db->query("SELECT * FROM stocktablepayables WHERE datearray BETWEEN '$startdate' AND '$enddate' GROUP BY rrno ORDER BY datearray DESC");
+            return $result->result_array();
+        }
+        public function getQtyByRR($code,$rrno){
+            $result=$this->db->query("SELECT SUM(quantity) as quantity FROM stocktable WHERE code='$code' AND rrno = '$rrno'");
+            return $result->row_array();
+        }
+
+        public function getAllProductionReport(){
+            $result=$this->db->query("SELECT r.description,s.* FROM stocktable s INNER JOIN receiving r ON r.code=s.code WHERE s.trantype='production' GROUP BY s.rrno,s.code ORDER BY s.datearray DESC,s.id ASC");
+            return $result->result_array();
+
         }
     }
 ?>
